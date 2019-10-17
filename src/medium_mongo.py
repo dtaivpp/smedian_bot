@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from mongo_generators import _get_all_generator, _update_one_generator
+from mongo_generators import _get_all_generator, _update_one_generator, _exists_generator
 
 class Medium(object):
   def __init__(self):
@@ -21,3 +21,9 @@ class Medium(object):
     self.update_one_Post = _update_one_generator(self.Publications)
     self.update_one_User = _update_one_generator(self.Publications)
     self.update_one_Collection = _update_one_generator(self.Publications)
+
+    # Generate the check if exists funcitons
+    self.exists_Publication = _exists_generator(self.Publications)
+    self.exists_Post = _exists_generator(self.Publications)
+    self.exists_User = _exists_generator(self.Publications)
+    self.exists_Collection = _exists_generator(self.Publications)
