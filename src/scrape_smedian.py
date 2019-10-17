@@ -30,7 +30,7 @@ def _request_data(url, retry=0):
 
 
 # Extract page data
-def extract_data(data):
+def _extract_data(data):
   last_pub_name, last_pub_id = None, None
 
   url_list = [item['url'] for item in data["values"]]
@@ -63,7 +63,7 @@ def _generate_next_url(PubName, PubId):
   return FormattedURL
 
 
-def get_smedian_publications(seed_url):
+def get_publication_list(seed_url):
   """ 
   Returns all smedian publications in a list
 
@@ -75,7 +75,7 @@ def get_smedian_publications(seed_url):
 
   while url != None:
     data  = _request_data(url)
-    nextPubName, nextPubId, urlList = extract_data(data)
+    nextPubName, nextPubId, urlList = _extract_data(data)
     
     pub_list = pub_list + urlList
 
@@ -87,7 +87,3 @@ def get_smedian_publications(seed_url):
     sleep(2,6)
 
   return pub_list
-
-# Program flow
-if __name__ == '__main__':
-  pass

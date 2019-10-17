@@ -1,8 +1,4 @@
 from pymongo import MongoClient
-from mongo_generators import _get_all_generator, \
-                             _update_one_generator, \
-                             _exists_generator, \
-                             _delete_one_generator
 
 class Medium(object):
   def __init__(self):
@@ -13,26 +9,60 @@ class Medium(object):
     self.Users = db["Users"]
     self.Publications = db["Publications"]
 
-    # Generate the getter for all the documents in file
-    self.get_all_Publications = _get_all_generator(self.Publications)
-    self.get_all_Posts = _get_all_generator(self.Posts)
-    self.get_all_Users = _get_all_generator(self.Users)
-    self.get_all_Collections = _get_all_generator(self.Collections)
 
-    # Generate the update_one for single document in the database
-    self.update_one_Publication = _update_one_generator(self.Publications)
-    self.update_one_Post = _update_one_generator(self.Posts)
-    self.update_one_User = _update_one_generator(self.Users)
-    self.update_one_Collection = _update_one_generator(self.Collections)
+  #### Factories ####
+  def _obj_dif_getter(self, oldObj, newObj):
+    updatedObj = {}
 
-    # Generate the check if exists funcitons
-    self.exists_Publication = _exists_generator(self.Publications)
-    self.exists_Post = _exists_generator(self.Posts)
-    self.exists_User = _exists_generator(self.Users)
-    self.exists_Collection = _exists_generator(self.Collections)
+    for key in newObj.keys():
+      if key not in oldObj:
+        continue
 
-    # Generate delete functinon for objects
-    self.delete_one_Publication = _delete_one_generator(self.Publications)
-    self.delete_one_Post = _delete_one_generator(self.Posts)
-    self.delete_one_User = _delete_one_generator(self.Users)
-    self.delete_one_Collection = _delete_one_generator(self.Collections)
+      if oldObj[key] == newObj[key]:
+        continue
+          
+      updatedObj[key] = newObj[key]
+    
+    return updatedObj
+
+
+  def get_all(self, collection):
+    return collection.find({})
+
+
+  def update_obj(self, collection, obj):
+    """
+    This method takes in an obj with an id and will update
+      the object with the new data
+    """
+    if collection.count_documents({"_id": obj['_id']}) == 0:
+      collection.insert_one(obj)
+    else:
+      old = collection.find_one({'_id': obj['_id']})
+
+      updatedObj = _obj_dif_getter(old, obj) 
+      collection.update_one({'_id': obj['_id']}, {'$set': update_obj}) 
+
+
+  def delete_one(self, collection, obj):
+    return collection.delete_one(obj['_id'])     
+
+
+  def exists(self, collection, obj):
+    return collection.count_documents({"_id": obj['_id']}) > 0
+
+
+
+  #### Publication funcitons ####
+  def delete_one_Publication(self, obj):
+    return delete_one(self, self.Publications, obj)
+    
+  def exists_Publication(self, obj):
+    return exists(self, self.Publications, obj)
+    
+  def get_all_Publications(self):
+    return get_all(self, self.Publications)
+     
+  def update_one_Publication(self, obj):
+    return update_obj(self, self.Publications, obj) 
+
