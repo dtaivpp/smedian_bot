@@ -40,8 +40,8 @@ class Medium(object):
     else:
       old = collection.find_one({'_id': obj['_id']})
 
-      updatedObj = _obj_dif_getter(old, obj) 
-      collection.update_one({'_id': obj['_id']}, {'$set': update_obj}) 
+      updatedObj = self._obj_dif_getter(old, obj) 
+      collection.update_one({'_id': obj['_id']}, {'$set': updatedObj}) 
 
 
   def delete_one(self, collection, obj):
@@ -55,14 +55,14 @@ class Medium(object):
 
   #### Publication funcitons ####
   def delete_one_Publication(self, obj):
-    return delete_one(self, self.Publications, obj)
+    return self.delete_one(self.Publications, obj)
     
   def exists_Publication(self, obj):
-    return exists(self, self.Publications, obj)
+    return self.exists(self.Publications, obj)
     
   def get_all_Publications(self):
-    return get_all(self, self.Publications)
+    return self.get_all(self.Publications)
      
   def update_one_Publication(self, obj):
-    return update_obj(self, self.Publications, obj) 
+    return self.update_obj(self.Publications, obj) 
 

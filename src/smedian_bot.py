@@ -4,6 +4,7 @@ seed_url = 'https://www.smedian.com/api/i/pub/advertised?bpa=true&limit=10&from=
 
 def run_smedian_bot():
   smedian_fixed_their_data = False
+  mediumDB = medium_mongo.Medium
 
   while not smedian_fixed_their_data:
   
@@ -11,6 +12,7 @@ def run_smedian_bot():
     smedian_pubs = scrape_smedian.get_publication_list(seed_url)
     
     # Updates
+    updates(mediumDB, smedian_pubs)
 
     # Get Bad Publication
 
@@ -22,5 +24,6 @@ def run_smedian_bot():
 
   return
 
-def updates(pubs):
+def updates(mediumDB,pubs):
+  mediumDB.get
   pass
