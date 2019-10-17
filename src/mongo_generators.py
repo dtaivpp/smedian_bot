@@ -43,6 +43,15 @@ def _update_one_generator(collection):
       collection.update_one({'_id': obj['_id']}, {'$set': update_obj}) 
 
 
+def _delete_one_generator(collection):
+  """  
+  Here we create a deleter for objects in the database
+  """
+
+  def delete_one(obj):
+    collection.delete_one(obj['_id'])
+  return delete_one
+
 def _exists_generator(collection):
 
   def exists(obj):
