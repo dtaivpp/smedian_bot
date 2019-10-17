@@ -1,4 +1,17 @@
-import pymongo
+def _obj_dif_getter(oldObj, newObj):
+  updatedObj = {}
+
+  for key in newObj.keys():
+    if key not in oldObj:
+      continue
+
+    if oldObj[key] == newObj[key]:
+      continue
+        
+    updatedObj[key] = newObj[key]
+  
+  return updatedObj
+
 
 def _get_all_generator(collection):
   """
@@ -10,6 +23,7 @@ def _get_all_generator(collection):
     return collection.find({})
 
   return get_all
+
 
 def _update_one_generator(collection):
   """ 
@@ -29,16 +43,9 @@ def _update_one_generator(collection):
       collection.update_one({'_id': obj['_id']}, {'$set': update_obj}) 
 
 
-def _obj_dif_getter(oldObj, newObj):
-  updatedObj = {}
+def _exists_generator(collection):
 
-  for key in newObj.keys():
-    if key not in oldObj:
-      continue
-
-    if oldObj[key] == newObj[key]:
-      continue
-        
-    updatedObj[key] = newObj[key]
+  def exists(obj):
+    return collection.count_documents({"_id": obj['_id']}) > 0
   
-  return updatedObj
+  return exists

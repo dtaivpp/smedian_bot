@@ -12,7 +12,7 @@ class Medium(object):
 
     # Generate the getter for all the documents in file
     self.get_all_Publications = _get_all_generator(self.Publications)
-    self.get_all_Posts = _get_all_generator(self.Publications)
+    self.get_all_Posts = _get_all_generator(self.Posts)
     self.get_all_Users = _get_all_generator(self.Publications)
     self.get_all_Collections = _get_all_generator(self.Publications)
 

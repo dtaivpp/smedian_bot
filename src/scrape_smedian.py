@@ -84,6 +84,8 @@ def get_smedian_publications(seed_url):
     
     else: url = None
 
+    sleep(2,6)
+
   return pub_list
 
 # Program flow
