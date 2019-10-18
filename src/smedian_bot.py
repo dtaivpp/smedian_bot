@@ -153,7 +153,8 @@ def sendTweet(url, body=''):
       if mention['sender_id'] == "@smedian_network":
         value = True
     
-    for dm in ['sender_id'] == "@smedian_network":
+    for dm in dms:
+      if dm['sender_id'] == "@smedian_network":
         value = True
 
     if not value:
