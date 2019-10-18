@@ -135,7 +135,6 @@ class Medium(object):
       'active': False
       }
     )
-    
 
     # If none return none
     if count == 0:
