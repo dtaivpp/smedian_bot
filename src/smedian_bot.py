@@ -42,9 +42,9 @@ tweetTemplate = [
   "@smedian_network I literally have a whole list of publications of yours that dont work. \n #Smedian {} \n {}",
   "@smedian_network I could send you the list of bad publicaions but youuu wont talk to me. \n #Smedian {} \n {}",
   "@smedian_network oh.... look at that... another bad publication...  \n #Smedian {} \n {}",
-  "@smedian_network RIP your inbox. Just clean your publicaiton list and I can stop tweeting these at you. \n #Smedian {} \n {}",
+  "@smedian_network RIP your inbox. Just clean your publicaiton list \n #Smedian {} \n {}",
   "@smedian_network Help. Me. Help. You. Remove the ded links. Here is another fyi. \n #Smedian {} \n {}",
-  "@smedian_network Fyi I dont really find this fun... here's another ded publication.  \n #Smedian {} \n {}",
+  "@smedian_network Fyi I dont really find this fun... here's another dead publication link.  \n #Smedian {} \n {}",
   "@smedian_network Row row row your boat through the dead publications...  \n #Smedian {} \n {}",
   "@smedian_network Instead of me coming up with clever tweets how about you clean your publication list? ¯\_(ツ)_/¯ \n #Smedian {} \n {}",
   "@smedian_network Please... clean your list. another bad pub \n #Smedian {} \n {}",
@@ -147,16 +147,12 @@ def sendTweet(url, body=''):
 
   try:
     mentions = twiAPI.GetMentions()
-    dms = twiAPI.GetDirectMessages()
 
     for mention in mentions:
-      if mention['sender_id'] == "@smedian_network":
+      if mention.user.screen_name == "smedian_network":
         value = True
     
-    for dm in dms:
-      if dm['sender_id'] == "@smedian_network":
-        value = True
-
+    
     if not value:
       twiAPI.PostUpdate(
         body
