@@ -3,6 +3,7 @@ from random import randint
 from time import sleep
 import json
 from copy import deepcopy
+from random import randint
 
 # Request data
 def _request_data(url, retry=0):
@@ -23,7 +24,7 @@ def _request_data(url, retry=0):
     _request_data(url, 3)
 
   else:
-    sleep(10, 20)
+    sleep(randint(10, 20))
     _request_data(url, retry + 1)
 
   return response.json()
@@ -35,7 +36,7 @@ def _extract_data(data):
 
   url_list = [item['url'] for item in data["values"]]
 
-  if 'name' in data["paging"]["from"]:
+  if 'from' in data["paging"]:
     last_pub_name = data["paging"]["from"]["name"]
     last_pub_id = data["paging"]["from"]["_id"]
 
@@ -84,6 +85,6 @@ def get_publication_list(seed_url):
     
     else: url = None
 
-    sleep(2,6)
+    sleep(randint(2,6))
 
   return pub_list
