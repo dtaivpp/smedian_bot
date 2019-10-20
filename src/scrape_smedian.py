@@ -52,7 +52,7 @@ def _generate_next_url(PubName, PubId):
       PubName: {}, PubId: {}".format(PubName, PubId))
 
   baseurl = 'https://www.smedian.com/api/i/pub/advertised' + \
-			'?bpa=true&limit=100&from=%7B%22name%22%3A%22'
+			'?bpa=true&limit=50&from=%7B%22name%22%3A%22'
   
   FormattedName = str(PubName).replace(" ", "%20")
   
