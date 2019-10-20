@@ -34,7 +34,7 @@ hashtags = [
 ]
 
 tweetTemplate = [
-  "@smedian_network You all have this url listed as a publication but it doesnt exist? ¯\\_(ツ)_/¯ \n #Smedian {} \n {}",
+  "@smedian_network You all have this url listed as a publication but it doesnt exist? ¯\\_(ツ)_/¯ \n #Smedian {} \n {}"
   "@smedian_network Hey I think you all may want to remove this publication. Its ded \n #Smedian {} \n {}",
   "@smedian_network Not sure if this is intentional but this publication is dead.... \n #Smedian {} \n {}",
   "@smedian_network You all seem to have some data issues. This publication doesnt exist... \n #Smedian {} \n {}",

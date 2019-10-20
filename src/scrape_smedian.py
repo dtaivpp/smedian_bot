@@ -8,6 +8,7 @@ from random import randint
 # Request data
 def _request_data(url, retry=0):
   response = requests.get(url)
+  data = {}
 
   if retry > 2:
     with open('error.log', 'w') as f:
@@ -27,7 +28,7 @@ def _request_data(url, retry=0):
     sleep(randint(10, 20))
     _request_data(url, retry + 1)
 
-  return response.json()
+  return data
 
 
 # Extract page data
