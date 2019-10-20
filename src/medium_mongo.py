@@ -41,7 +41,7 @@ class Medium(object):
     self.Collections = self.db["Collections"]
     self.Users = self.db["Users"]
     self.Publications = self.db["Publications"]
-    self.TwitterCurrCount = get_twitter_currCount(self.Publications);    
+    self.TwitterCurrCount = get_twitter_currCount(self.Publications)    
 
 
   #### Factories ####

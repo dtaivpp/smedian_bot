@@ -34,7 +34,7 @@ hashtags = [
 ]
 
 tweetTemplate = [
-  "@smedian_network You all have this url listed as a publication but it doesnt exist? ¯\_(ツ)_/¯ \n #Smedian {} \n {}",
+  "@smedian_network You all have this url listed as a publication but it doesnt exist? ¯\\_(ツ)_/¯ \n #Smedian {} \n {}",
   "@smedian_network Hey I think you all may want to remove this publication. Its ded \n #Smedian {} \n {}",
   "@smedian_network Not sure if this is intentional but this publication is dead.... \n #Smedian {} \n {}",
   "@smedian_network You all seem to have some data issues. This publication doesnt exist... \n #Smedian {} \n {}",
@@ -46,10 +46,10 @@ tweetTemplate = [
   "@smedian_network Help. Me. Help. You. Remove the ded links. Here is another fyi. \n #Smedian {} \n {}",
   "@smedian_network Fyi I dont really find this fun... here's another dead publication link.  \n #Smedian {} \n {}",
   "@smedian_network Row row row your boat through the dead publications...  \n #Smedian {} \n {}",
-  "@smedian_network Instead of me coming up with clever tweets how about you clean your publication list? ¯\_(ツ)_/¯ \n #Smedian {} \n {}",
+  "@smedian_network Instead of me coming up with clever tweets how about you clean your publication list? ¯\\_(ツ)_/¯ \n #Smedian {} \n {}",
   "@smedian_network Please... clean your list. another bad pub \n #Smedian {} \n {}",
-  "@smedian_network If you clean your bad publications I wont have anything to tweet about ¯\_(ツ)_/¯ \n #Smedian {} \n {}",
-  "@smedian_network What if instead of ignoring me you clean your list ¯\_(ツ)_/¯ \n #Smedian {} \n {}",
+  "@smedian_network If you clean your bad publications I wont have anything to tweet about ¯\\_(ツ)_/¯ \n #Smedian {} \n {}",
+  "@smedian_network What if instead of ignoring me you clean your list ¯\\_(ツ)_/¯ \n #Smedian {} \n {}",
   "@smedian_network Hey guys, just figured you would want to know this publicaiton is dead. \n #Smedian {} \n {}",
   "@smedian_network Here is another dead publication \n #Smedian {} \n {}",
   "@smedian_network I found this dead publication in your list. Could you remove it? \n #Smedian {} \n {}",
