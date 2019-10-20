@@ -143,6 +143,7 @@ def sendTweet(url, body=''):
   
   if body == '':
     body = tweetTemplate[randint(0, len(tweetTemplate) - 1)].format(tag, url)
+    print(body)
 
   try:
     mentions = twiAPI.GetMentions()
