@@ -137,8 +137,7 @@ def sendTweet(url, body=''):
   twiAPI = twitter.Api(consumer_key=[environ.get('twitterKey')],
                       consumer_secret=[environ.get('twitterSecret')],
                       access_token_key=[environ.get('twitterAccessToken')],
-                      access_token_secret=[environ.get('twitterAccessSecret')],
-                      input_encoding='utf8')
+                      access_token_secret=[environ.get('twitterAccessSecret')])
 
   tag = hashtags[randint(0, len(hashtags) - 1)]
   
