@@ -5,7 +5,7 @@ from random import randint
 import twitter 
 from os import environ
 
-seed_url = 'https://www.smedian.com/api/i/pub/advertised?bpa=true&limit=50&from=%7B"name"%3A"4IR%20Solutions"%2C"_id"%3A"5d9e2295dc57aecb0023b172"%7D'
+seed_url = 'https://www.smedian.com/api/i/pub/advertised?bpa=true&limit=10&from=%7B"name"%3A"4IR%20Solutions"%2C"_id"%3A"5d9e2295dc57aecb0023b172"%7D'
 
 hashtags = [
   "#UmHello",
