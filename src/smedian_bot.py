@@ -4,6 +4,7 @@ from time import sleep
 from random import randint
 import twitter 
 from os import environ
+from custom_exceptions import AuthenticationError
 
 seed_url = 'https://www.smedian.com/api/i/pub/advertised?bpa=true&limit=10&from=%7B"name"%3A"4IR%20Solutions"%2C"_id"%3A"5d9e2295dc57aecb0023b172"%7D'
 
@@ -81,6 +82,9 @@ def run_smedian_bot():
 
     # Tweet
     smedian_fixed_their_data = sendTweet(pub['_id'])    
+    
+    # Increament tweeted value on this obj
+    mediumDB.tweeted_increment(pub)
 
     # Wait
     sleep(randint(3600,7200))
@@ -144,23 +148,21 @@ def sendTweet(url, body=''):
   if body == '':
     body = tweetTemplate[randint(0, len(tweetTemplate) - 1)].format(tag, url)
 
-  try:
-    mentions = twiAPI.GetMentions()
 
-    for mention in mentions:
-      if mention.user.screen_name == "smedian_network":
-        value = True
-    
-    verified = twiAPI.VerifyCredentials()
-    if verified == None:
-      raise Warning("User Not Authorized")
+  mentions = twiAPI.GetMentions()
 
-    if not value:
-      twiAPI.PostUpdate(
-        body
-      )
-  except:
-    pass
+  for mention in mentions:
+    if mention.user.screen_name == "smedian_network":
+      value = True
+  
+  verified = twiAPI.VerifyCredentials()
+  if verified == None:
+    raise AuthenticationError("User Not Authorized")
+
+  if not value:
+    twiAPI.PostUpdate(
+      body
+    )
 
   return value
 

@@ -85,6 +85,24 @@ class Medium(object):
   
     return
 
+  def tweeted_increment(self, obj):
+    tweeted = self.Publication.find_one({'_id': obj['id']})
+    updated_tweeted = 1
+
+    if 'tweeted' in tweeted:
+      updated_tweeted = tweeted['tweeted'] + 1
+    
+    self.Publications.update_one({
+      '_id': obj['_id'], 
+      '$set':{
+        'tweeted': updated_tweeted
+      }
+    })
+    
+    return
+
+
+
   def delete_one(self, collection, obj):
     return collection.delete_one(obj['_id'])     
 
