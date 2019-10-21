@@ -134,10 +134,10 @@ def updates(mediumDB, pubs):
 
 def sendTweet(url, body=''):
   value = False
-  twiAPI = twitter.Api(consumer_key=[environ.get('twitterKey')],
-                      consumer_secret=[environ.get('twitterSecret')],
-                      access_token_key=[environ.get('twitterAccessToken')],
-                      access_token_secret=[environ.get('twitterAccessSecret')])
+  twiAPI = twitter.Api(consumer_key=environ.get('twitterKey'),
+                      consumer_secret=environ.get('twitterSecret'),
+                      access_token_key=environ.get('twitterAccessToken'),
+                      access_token_secret=environ.get('twitterAccessSecret'))
 
   tag = hashtags[randint(0, len(hashtags) - 1)]
   
@@ -151,12 +151,14 @@ def sendTweet(url, body=''):
       if mention.user.screen_name == "smedian_network":
         value = True
     
-    
+    verified = twiAPI.VerifyCredentials()
+    if verified == None:
+      raise Warning("User Not Authorized")
+
     if not value:
       twiAPI.PostUpdate(
         body
       )
-      print(body)
   except:
     pass
 
