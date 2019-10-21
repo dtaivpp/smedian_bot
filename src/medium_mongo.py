@@ -27,7 +27,7 @@ def get_twitter_currCount(publications):
     for item in tweets:
       tweetNum = tweetNum + item['tweetedAmnt']
 
-    invalid = publications.count_documents({'smedain_publication': True, 'active': False,})
+    invalid = publications.count({'smedain_publication': True, 'active': False,})
     if invalid != 0 and tweetNum != 0:
       tweetNum = math.floor(tweetNum / invalid)
     
@@ -74,7 +74,7 @@ class Medium(object):
     This method takes in an obj with an id and will update
       the object with the new data
     """
-    if collection.count_documents({"_id": obj['_id']}) == 0:
+    if collection.count({"_id": obj['_id']}) == 0:
       collection.insert_one(obj)
     else:
       old = collection.find_one({'_id': obj['_id']})
@@ -90,7 +90,7 @@ class Medium(object):
 
 
   def exists(self, collection, obj):
-    return collection.count_documents({"_id": obj['_id']}) > 0
+    return collection.count({"_id": obj['_id']}) > 0
 
 
 
@@ -129,7 +129,7 @@ class Medium(object):
     if pub != None:
       return pub
     
-    count = self.Publications.count_documents(
+    count = self.Publications.count(
       {
       'smedian_publication': True, 
       'active': False
