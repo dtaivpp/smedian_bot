@@ -35,7 +35,7 @@ def get_twitter_currCount(publications):
 
 class Medium(object):
   def __init__(self):
-    self.client = MongoClient()
+    self.client = MongoClient('192.168.1.182',27017)
     self.db = self.client["Medium"]
     self.Posts = self.db["Posts"]
     self.Collections = self.db["Collections"]
